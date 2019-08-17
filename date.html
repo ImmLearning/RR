@@ -1,0 +1,84 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+@media (max-width: 690px){
+span.c {
+  width:100%;
+  display: block;
+  padding: 1px 5px;
+ }
+ .a {
+ height:100%;
+ }
+ }
+ @media (max-width: 767px){
+ span.c {
+ width:100%;
+  display: block;
+  padding: 1px 5px;
+ }
+ .a {
+ height:100%;
+ }
+ }
+ @media (max-width: 992px)
+ {
+ span.c {
+   display: block;
+  padding: 1px 5px;
+ }
+ .a {
+ height:100%;
+ }}
+
+</style>
+<body>
+<div class="a">
+<?php
+// Datum und Zeit ermitteln bzw. ausgeben
+$timestamp=time();
+$datum= date("d.m.Y",$timestamp);
+$uhrzeit= date("H:i",$timestamp);
+$output .= '<p align="center"><strong>Systemzeit: '.$datum." ".$uhrzeit." Uhr </strong></p>";
+
+echo $output;
+
+// Formular zur Steuerung der Zeitreihenaufnahme
+$form=<<< EOT
+<form name="control" method=post action="dateexec.php">
+<p align="center">
+<strong>Browserzeit:</strong><br><br><br>
+ <span class="c"> Tag [DD]: <input name="DD" type="text" size="2" value="" maxlength="2"></span> &nbsp;&nbsp;&nbsp;
+ <span class="c"> Monat [MM]: <input name="MM" type="text" size="2" value="" maxlength="2"></span> &nbsp;&nbsp;&nbsp;
+ <span class="c"> Jahr [JJJJ]: <input name="JJJJ" type="text" size="4" value="" maxlength="4"></span>&nbsp;&nbsp;&nbsp; 
+ <span class="c"> Stunde [hh]: <input name="hh" type="text" size="2" value="" maxlength="2"></span> &nbsp;&nbsp;&nbsp;
+ <span class="c"> Minute [mm]: <input name="mm" type="text" size="2" value="" maxlength="2"></p> </span> <br> <br>
+<span class="c"> <p align="center"><input type=submit value="Datum & Zeit setzen" align="center"></p></span> 
+</form><br>
+EOT;
+
+echo $form;
+
+?>
+</div>
+<script>
+
+// Werte des Formulars auf Browser-Zeit setzen
+var d = new Date();
+var form=document.forms["control"];
+var tag=form.elements["DD"];
+if(tag.value=="")tag.value=("0"+d.getDate()).slice(-2);
+var monat=form.elements["MM"];
+if(monat.value=="")monat.value=("0"+(d.getMonth()+1)).slice(-2);
+var jahr=form.elements["JJJJ"];
+if(jahr.value=="")jahr.value=("0000"+d.getFullYear()).slice(-4);
+var stunde=form.elements["hh"];
+if(stunde.value=="")stunde.value=("0"+d.getHours()).slice(-2);
+var minute=form.elements["mm"];
+if(minute.value=="")minute.value=("0"+d.getMinutes()).slice(-2);
+
+</script>
+
+</html>
+</body>
+

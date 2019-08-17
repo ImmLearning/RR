@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head> <title>BACKUP</title>
+<style>
+body {background-color: white;
+	margin-right: 200px;
+		}
+h1   {color: blue;
+		margin-left: 30%;
+        font-size: 40px;}
+
+h2  	 {color: black;
+		  font-family: "Times New Roman", Times, serif;
+		font-size: 30px;}
+h4:hover {
+  color: red;
+  h4  	 {color: black;
+		  font-family: "Times New Roman", Times, serif;
+		font-size: 15px;}
+}
+
+@media (max-width: 690px) and (max-width: 767px) a{
+h1 {color: blue;
+	font-size: 20px;
+	margin-top:15%;
+	margin-left:18%;
+		}
+h2 {color: black;
+	 font-size: 15px;
+	 margin-top: 2%;} 
+.nowrap {
+  white-space: nowrap ;
+}
+ .a {
+ height:100%;
+ }
+ .c {display:inline-block;
+ margin-left:2%;
+ }
+ }
+ @media (max-width: 992px)
+ {
+h1 {color: blue;
+	font-size: 20px;
+	margin-top:15%;
+	margin-left:18%;
+	}
+h2 {color: black;
+	font-size: 15px;
+	margin-top: 2%;} 
+.nowrap {
+  white-space: nowrap ;
+} .a {
+ height:100%;
+ }
+  .c {display:inline-block;
+ margin-left:2%;
+ }
+}
+
+</style>
+</head>
+<body>
+     <div class="a">
+    <span class="nowrap"> <h1><u>Backup CloudPlusBox</u></h1></span>
+	<span class="nowrap"> <h2>Folgen Sie den untenstehenden Schritten</h2></span>
+     <span class="nowrap"> <h4>2.Prüfen Sie die letzte Zeile der unten angezeigten Box. Wenn am Ende der letzten Zeile /media/backup/<br> angezeigt wird, klicken Sie "BACKUP". Wenn nicht, klicken Sie "REBOOT".</h4> </span>
+<div style="border:2px dashed red;">
+<pre>
+<?php
+
+exec("sudo umount /dev/sda1");
+
+exec("sudo mount /dev/sda1 /media/backup/");
+echo "\r\n";
+exec("df -h ", $arr);
+print_r($arr);
+echo "\n";
+echo "\n";
+
+?>
+</pre>
+</div>
+<br><br>
+	    <div class="c">
+	<div style="float: left; margin-bottom:5%";> 
+        <form action="reboot.php">            
+			 <input type="submit"  value="REBOOT" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </form>
+    </div>
+	<div style="float: center;margin-bottom:5%"> 
+        <form  action="list.php" >
+            <input type="submit" value="BACKUP" >
+        </form>
+    </div>
+	</div>
+    
+     
+    </div>
+
+</body>
+</html>
+
