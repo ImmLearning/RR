@@ -160,8 +160,8 @@ body {
   border: none;
   cursor: pointer;
   position: fixed;
-  left: 50%;
-  	
+  left: 35%;
+  
   
 }
 
@@ -169,8 +169,9 @@ body {
   background-color: #2980B9;
 }
 
-.dropdown {
-  position: relative;
+.dropdown{
+  position: fixed;
+  left: 35%;
   display: inline-block;
 }
 
